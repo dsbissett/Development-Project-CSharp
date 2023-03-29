@@ -26,7 +26,7 @@ public interface IRepository<T> where T : class
 
     public IQueryable<T> GetAllIncluding(params Expression<Func<T, object>>[] includeProperties);
 
-    public T? Update(T t, object key);
+    public T? Update(T t);
 
-    public Task<T?> UpdateAsync(T t, object key);
+    public Task<T?> UpdateAsync(T t);
 }

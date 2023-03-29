@@ -25,6 +25,7 @@ namespace Sparcpoint.Inventory
 
         public async Task<int> AddProductAsync(DapperProduct product)
         {
+            // Look at this garbage! LOL!
             const string sql =
                 @"INSERT INTO [Instances].[Products] ([Name], [Description], [ProductImageUris], [ValidSkus]) VALUES (@Name, @Description, @ProductImageUris, @ValidSkus);
                                 DECLARE @InstanceId INT = SCOPE_IDENTITY();

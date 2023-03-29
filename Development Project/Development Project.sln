@@ -11,9 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sparcpoint.Core", "Sparcpoi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sparcpoint.SqlServer.Abstractions", "Sparcpoint.SqlServer.Abstractions\Sparcpoint.SqlServer.Abstractions.csproj", "{4E72CD4A-C9FE-4A04-9F07-A770E3AD7297}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sparcpoint.Inventory", "Sparcpoint.Inventory\Sparcpoint.Inventory.csproj", "{504371D8-FEEF-4696-8141-A5C15DD776AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sparcpoint.Inventory", "Sparcpoint.Inventory\Sparcpoint.Inventory.csproj", "{504371D8-FEEF-4696-8141-A5C15DD776AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SparcPoint.Inventory.Tests", "SparcPoint.Inventory.Tests\SparcPoint.Inventory.Tests.csproj", "{306AFFAE-48B3-4A82-A2C2-85FADAB986B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SparcPoint.Inventory.Tests", "SparcPoint.Inventory.Tests\SparcPoint.Inventory.Tests.csproj", "{306AFFAE-48B3-4A82-A2C2-85FADAB986B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sparcpoint.Service", "Sparcpoint.Service\Sparcpoint.Service.csproj", "{FD512003-B165-42C0-927A-39080570B59F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,14 @@ Global
 		{306AFFAE-48B3-4A82-A2C2-85FADAB986B3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{306AFFAE-48B3-4A82-A2C2-85FADAB986B3}.Release|x86.ActiveCfg = Release|Any CPU
 		{306AFFAE-48B3-4A82-A2C2-85FADAB986B3}.Release|x86.Build.0 = Release|Any CPU
+		{FD512003-B165-42C0-927A-39080570B59F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD512003-B165-42C0-927A-39080570B59F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD512003-B165-42C0-927A-39080570B59F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FD512003-B165-42C0-927A-39080570B59F}.Debug|x86.Build.0 = Debug|Any CPU
+		{FD512003-B165-42C0-927A-39080570B59F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD512003-B165-42C0-927A-39080570B59F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD512003-B165-42C0-927A-39080570B59F}.Release|x86.ActiveCfg = Release|Any CPU
+		{FD512003-B165-42C0-927A-39080570B59F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

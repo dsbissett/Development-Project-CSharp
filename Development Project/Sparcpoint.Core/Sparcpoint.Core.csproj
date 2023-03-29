@@ -10,6 +10,7 @@
     <Copyright>(c) 2021 Sparcpoint, LLC</Copyright>
     <Description>Core Abstractions for various Sparcpoint Systems</Description>
     <Version>1.0.1</Version>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 
 namespace Sparcpoint.Inventory.Abstractions;
 
@@ -62,28 +63,64 @@ public abstract class RepositoryBase<T> : IRepository<T> where T : class
         return includeProperties.Aggregate(queryable, (current, includeProperty) => current.Include(includeProperty));
     }
 
-    public virtual T? Update([NotNull] T t, object key)
+    public virtual T? Update([NotNull] T t)
     {
-        var exist = this.context.Set<T>().Find(key);
+        var keyName = this.context.Model
+            .FindEntityType(typeof(T))
+            ?.FindPrimaryKey()
+            ?.Properties
+            .Select(x => x.Name).Single();
 
-        if (exist == null) return exist;
+        var key = typeof(T).GetProperty(keyName)?.GetValue(t, null);
 
-        this.context.Entry(exist).CurrentValues.SetValues(t);
+        var entity = this.context.Set<T>().Find(key);
+
+        if (entity == null) return entity;
+
+        var entry = this.context.Entry(entity);
+
+        entry.CurrentValues.SetValues(t);
+
+        foreach (var property in entry.Properties)
+        {
+            if (property.CurrentValue != null) continue;
+
+            property.IsModified = property.OriginalValue != null && property.OriginalValue == property.CurrentValue;
+        }
+
         this.context.SaveChanges();
 
-        return exist;
+        return entity;
     }
 
-    public virtual async Task<T?> UpdateAsync([NotNull] T t, object key)
+    public virtual async Task<T?> UpdateAsync([NotNull] T t)
     {
-        var exist = await this.context.Set<T>().FindAsync(key);
+        var keyName = this.context.Model
+            .FindEntityType(typeof(T))
+            ?.FindPrimaryKey()
+            ?.Properties
+            .Select(x => x.Name).Single();
 
-        if (exist == null) return exist;
+        var key = typeof(T).GetProperty(keyName)?.GetValue(t, null);
 
-        this.context.Entry(exist).CurrentValues.SetValues(t);
+        var entity = await this.context.Set<T>().FindAsync(key);
+
+        if (entity == null) return entity;
+
+        var entry = this.context.Entry(entity);
+
+        entry.CurrentValues.SetValues(t);
+
+        foreach (var property in entry.Properties)
+        {
+            if (property.CurrentValue != null) continue;
+
+            property.IsModified = property.OriginalValue != null && property.OriginalValue == property.CurrentValue;
+        }
+        
         await this.context.SaveChangesAsync();
 
-        return exist;
+        return entity;
     }
 
     public virtual async Task<T?> FindAsync(Expression<Func<T, bool>> expr)
